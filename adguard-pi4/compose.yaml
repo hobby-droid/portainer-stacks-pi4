@@ -5,7 +5,7 @@ services:
     environment:
       - TZ=Europe/London
       - CACHE_SIZE=16777216  # 16MB in bytes
-    hostname: 'adguardberry'
+    hostname: 'adguardpi4'
     restart: 'unless-stopped'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
