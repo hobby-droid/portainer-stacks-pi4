@@ -1,0 +1,13 @@
+services:
+  adguardhome-sync:
+    image: lscr.io/linuxserver/adguardhome-sync:latest
+    container_name: adguardhome-sync
+    environment:
+      - TZ=Europe/London
+      - CONFIGFILE=/config/adguardhome-sync.yaml #optional
+    volumes:
+      - /docker/adguardhome-sync/config:/config
+    ports:
+      - 8080:8080
+    network_mode: "host"
+    restart: unless-stopped

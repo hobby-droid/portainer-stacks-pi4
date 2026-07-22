@@ -1,0 +1,19 @@
+name: diun
+
+services:
+  diun:
+    image: crazymax/diun:latest
+    command: serve
+    volumes:
+      - "/docker/diun/data:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - "TZ=Europe/London"
+      - "DIUN_WATCH_WORKERS=20"
+      - "DIUN_WATCH_SCHEDULE=0 6 * * 5"  # Run at 6:00am on every Friday
+      - "DIUN_WATCH_JITTER=30s"
+      - "DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=true"
+      - "DIUN_NOTIF_DISCORD_WEBHOOKURL=${DISCORD_WEBHOOK_URL}"
+      - "DIUN_NOTIF_SCRIPT_CMD=/data/scripts/notify.sh"
+
+    restart: unless-stopped
