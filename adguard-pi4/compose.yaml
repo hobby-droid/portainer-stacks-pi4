@@ -1,11 +1,11 @@
 services:
-  adguardhome:
+  adguardhomepi4:
     image: 'adguard/adguardhome:latest'
     container_name: 'adguardhome_pi4'
     environment:
       - TZ=Europe/London
       - CACHE_SIZE=16777216  # 16MB in bytes
-    hostname: 'adguardpi4'
+    hostname: 'adguardhomepi4'
     restart: 'unless-stopped'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
